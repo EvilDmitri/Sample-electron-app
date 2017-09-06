@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Password Keychain</title>
+		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" type="text/css" href="../../node_modules/angular-material/angular-material.css">
+
+		<script src="../../node_modules/angular/angular.js"></script>
+		<script src="../../node_modules/angular-animate/angular-animate.js"></script>
+		<script src="../../node_modules/angular-aria/angular-aria.js"></script>
+		<script src="../../node_modules/angular-material/angular-material.js"></script>
+		
+
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<!-- <h1>Password Keychain</h1> -->
+
+				<!-- <div ng-app="myApp" ng-controller="MainCtrl as vm">
+				    <button toggle-insert-view class="md-button">
+				        <i class="material-icons">add</i>
+				    </button>
+				</div> -->
+
+			</header>
+
+			<section class="main" ng-app="myApp" ng-controller="MainCtrl as vm">
+				<md-content>
+					<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+					    <md-button class="md-button md-raised" data-ng-click="fight()">Fight</md-button>
+					    <md-button class="md-button md-raised md-primary" data-ng-click="stopFight()">Stop</md-button>
+					    <md-button ng-disabled="true" class="md-button md-raised md-primary">Disabled</md-button>
+					    <md-button class="md-button md-raised md-warn" data-ng-click="resetFight()">Reset</md-button>
+					</section>
+				<md-content>
+
+
+				<md-progress-linear id="progress_1" md-mode="determinate" value="{{blood_1}}"></md-progress-linear>
+				<md-progress-linear id="progress_2" md-mode="determinate" value="{{blood_2}}"></md-progress-linear>
+
+	
+
+			</section>
+
+			<section>
+				<div id="timerDiv" class="timer">12:35</div>
+			</section>
+
+			<footer></footer>
+		</div>
+	</body>
+	
+	<script src="./main.view.js"></script>
+	<script type="text/javascript"> 
+      var fs = require('fs');
+      var file = fs.readFileSync('./package.json'); 
+      document.write(file); 
+   </script>
+</html>
