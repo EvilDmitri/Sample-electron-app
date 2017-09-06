@@ -23,7 +23,9 @@ app.factory('Generator', function() {
 
 
 app.controller('MainCtrl', ['$scope', '$interval', function($scope, $interval) {
-    
+    $scope.getPage = function() {
+        ipcRenderer.send('get-page');
+    };
 
 }]);
 

@@ -36,7 +36,7 @@ function createMainWindow() {
 	win.loadURL(`file://${__dirname}/../windows/main/main.html`);
 	win.openDevTools();
 	win.on('closed', onClosed);
-	
+
 	// When UI has finish loading
     win.webContents.on('did-finish-load', () => {
         // Send the timer value
@@ -56,7 +56,7 @@ function createInsertWindow () {
 	});
 
 	insertWindow.loadURL(`file://${__dirname}/../windows/insert/insert.html`);
-	
+
 	insertWindow.on('closed', function() {
 		insertWindow = null;
 	});
@@ -78,16 +78,42 @@ app.on('ready', () => {
 
 	mainWindow = createMainWindow();
 
-	
+
 });
 
 
 
 ipc.on('toggle-insert-view', function() {
-	
+
 	if(!insertWindow) {
 		createInsertWindow();
 	}
 
 	return (insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
+});
+
+
+ipc.on('get-page', function() {
+
+	// ToDo
+	const http = require('http');
+
+	let options = {
+	    host: 'google.com',
+	    path: '/'
+	};
+	let request = http.request(options, function (res) {
+	    let data = '';
+	    res.on('data', function (chunk) {
+	        data += chunk;
+	    });
+	    res.on('end', function () {
+	        console.log(data);
+
+	    });
+	});
+	request.on('error', function (e) {
+	    console.log(e.message);
+	});
+	request.end();
 });
