@@ -1,5 +1,6 @@
 'use strict';
 const electron = require('electron');
+const fs = require("fs");
 const ipc = require('electron').ipcMain;
 
 const app = electron.app;
@@ -83,24 +84,25 @@ app.on('ready', () => {
 
 
 
-ipc.on('toggle-insert-view', function() {
+// ipc.on('toggle-insert-view', function() {
+//
+// 	if(!insertWindow) {
+// 		createInsertWindow();
+// 	}
+//
+// 	return (insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
+// });
 
-	if(!insertWindow) {
-		createInsertWindow();
-	}
 
-	return (insertWindow.isVisible()) ? insertWindow.hide() : insertWindow.show();
-});
+ipc.on('get-page', function(event, args) {
 
+	console.log(args[0]);
 
-ipc.on('get-page', function() {
-
-	// ToDo
 	const http = require('http');
 
 	let options = {
-	    host: 'google.com',
-	    path: '/'
+	    host: 'sockslist.net',
+		path: '/proxy/server-socks-hide-ip-address/1#proxylist'
 	};
 	let request = http.request(options, function (res) {
 	    let data = '';
@@ -108,12 +110,18 @@ ipc.on('get-page', function() {
 	        data += chunk;
 	    });
 	    res.on('end', function () {
+	    	fs.writeFile('file.html', data, 'utf8');
 	        console.log(data);
-
 	    });
 	});
 	request.on('error', function (e) {
 	    console.log(e.message);
 	});
 	request.end();
+
+
+	function nospy (str, fakechar) {
+		var re = new RegExp(fakechar ,"g");
+		return str.replace(re, "");
+	}
 });

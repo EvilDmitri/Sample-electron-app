@@ -1,7 +1,7 @@
-let ipcRenderer = require('electron').ipcRenderer;
+let ipcRenderer = require('electron').ipcRenderer; 
 let uuid = require('uuid');
 
-let app = angular.module('myApp', ['ngAnimate', 'ngMaterial', 'ngMdIcons']);
+var app = angular.module('myApp', ['ngAnimate', 'ngMaterial', 'ngMdIcons']);
 
 app.directive('toggleInsertView', function() {
         return function(scope, el) {
@@ -24,19 +24,13 @@ app.factory('Generator', function() {
 
 app.controller('MainCtrl', ['$scope', '$interval', function($scope, $interval) {
     $scope.getPage = function() {
-
-
-    	let url = $scope.scraper.url;
-
-        ipcRenderer.send('get-page', [url]);
+        ipcRenderer.send('get-page');
     };
-
-
 
 }]);
 
 
 // Listen to the 'timer-change' event
-// ipcRenderer.on('timer-change', (event, t) => {
-//
-// });
+ipcRenderer.on('timer-change', (event, t) => {
+ 
+});

@@ -12,40 +12,34 @@
 		<script src="../../node_modules/angular-material/angular-material.js"></script>
 
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
-
-
+		
 
 	</head>
 	<body>
 		<div class="container"  ng-app="myApp" ng-controller="MainCtrl as vm">
 			<header>
-				<h1>Proxy Scraper</h1>
-
-				<md-input-container class="md-block">
-					<label>Site address</label>
-					<input required md-no-asterisk ng-model="scraper.url">
-				</md-input-container>
-
+				<h1>Password Keychain</h1>
+			    <md-button  toggle-insert-view class="md-button md-raised md-primary">
+					<ng-md-icon icon="add" style="fill: white" size="48" aria-label="ShowHidePasswordWindow"></ng-md-icon>
+			    </md-button>
 
 				<md-button class="md-button md-raised md-primary" ng-click="getPage()">
-					<ng-md-icon icon="file_download" style="fill: white" size="48"></ng-md-icon>
+					<ng-md-icon icon="get" style="fill: white" size="48"></ng-md-icon>
 			    </md-button>
 
 			</header>
 
 
 			<section class="main">
-
+				
 
 
 			</section>
 
-			<footer>
-
-			</footer>
+			<footer></footer>
 		</div>
 	</body>
-
+	
 	<script src="./main.view.js"></script>
 
 </html>
